@@ -1,9 +1,10 @@
 
+using System;
 using System.IO;
 using UnityEngine;
 
 
-public class JsonReader  //: MonoBehaviour
+public class JsonReader  : MonoBehaviour
 {
 
   //  public static JsonReader instance;
@@ -19,7 +20,13 @@ public class JsonReader  //: MonoBehaviour
         MyemployeeList = JsonUtility.FromJson<EmployeeList>(textTMp);
         foreach (Employee e in MyemployeeList.employees)
         {
+            Debug.Log(e.lastName);
             Debug.Log(e);
+            Debug.Log(e.age);
+            Debug.Log(e.firstName);
+            Debug.Log("********************");
+
+
         }
 
     }
