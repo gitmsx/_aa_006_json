@@ -1,46 +1,27 @@
 
+using System.IO;
 using UnityEngine;
 
 
-public class JsonReader : MonoBehaviour
+public class JsonReader  //: MonoBehaviour
 {
 
-    private static JsonReader instance;
-
-
-    private void Awake()
-    {
-        if (JsonReader.instance != null)
-        {
-            Debug.LogError("More 1 JsonReader instantiete in Programm. Abnormal programm termination ");
-        }
-
-        instance = this;
-    }
-
-
-    public TextAsset jsonFile;
-
+  //  public static JsonReader instance;
     public EmployeeList MyemployeeList = new EmployeeList();
 
-    void Start()
+
+
+    public void list11(string jsonFile)
     {
 
-        list11();
-
-
-    }
-
-
-    public void list11()
-    {
-        MyemployeeList = JsonUtility.FromJson<EmployeeList>(jsonFile.text);
-
+        // string [] Text2Parsing = File.ReadAllLines(jsonFile);
+        string textTMp = File.ReadAllText(jsonFile);
+        MyemployeeList = JsonUtility.FromJson<EmployeeList>(textTMp);
         foreach (Employee e in MyemployeeList.employees)
         {
-            print(" firstName =" + e.firstName + " lastName " + e.lastName + " Age " + e.age.ToString());
-
+            Debug.Log(e);
         }
+
     }
 
 
